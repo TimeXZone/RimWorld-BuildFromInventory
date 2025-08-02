@@ -16,7 +16,8 @@ namespace Build_From_Inventory
 	{
 		//GenClosest::ClosestThingReachable
 		//protected Job ResourceDeliverJobFor(Pawn pawn, IConstructible c, bool canRemoveExistingFloorUnderNearbyNeeders = true)
-		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+                [HarmonyPriority(Priority.Last)]
+                public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
 		{
 			instructions = Transpilers.MethodReplacer(instructions,
 				AccessTools.Method(typeof(GenClosest), nameof(GenClosest.ClosestThingReachable)),
